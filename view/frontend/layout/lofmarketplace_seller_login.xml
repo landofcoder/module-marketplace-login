@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Lof_MarketplaceLogin::css/seller/login.css" />
+    </head>
+    <body>
+        <referenceContainer name="header.container" remove="true" />
+        <referenceContainer name="footer" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+		<referenceContainer name="content">
+			<container name="seller.login.container" label="Seller Login Container"
+				htmlTag="div" htmlClass="login-container">
+				<block class="Lof\MarketPlace\Block\Seller\Login" name="marketplace_seller_login"
+					template="Lof_MarketplaceLogin::seller/login.phtml">
+					<container name="form.additional.info" as="form_additional_info" />
+				</block>
+			</container>
+			<block class="Magento\Cookie\Block\RequireCookie" name="require-cookife"
+				template="Magento_Cookie::require_cookie.phtml">
+				<arguments>
+					<argument name="triggers" xsi:type="array">
+						<item name="loginButton" xsi:type="string">.action.login</item>
+					</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

@@ -1,0 +1,83 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_MarketPlaceLogin
+ * @copyright  Copyright (c) 2022 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+/**
+ * @var $block \Lof\MarketPlace\Block\Seller\Login
+ */
+?>
+<div class="col-lg-6 col-md-8 login-box">
+    <div class="col-lg-12 login-key">
+        <i class="fa fa-key" aria-hidden="true"></i>
+    </div>
+    <div class="col-lg-12 login-title">
+        <?= $block->escapeHtml(__('SELLER LOGIN')) ?>
+    </div>
+    <div class="col-lg-12 login-form row">
+        <form action="<?= $block->escapeHtmlAttr($block->getPostActionUrl()) ?>"
+              method="post" id="login-form" data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey'); ?>
+            <fieldset class="fieldset login"
+                      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+                <div class="form-group field email required">
+                    <label class="form-control-label label" for="email">
+                        <span><?= $block->escapeHtml(__('EMAIL')) ?></span>
+                    </label>
+                    <input name="login[username]"
+                           value="<?= $block->escapeHtml($block->getUsername()) ?>"
+                        <?php if ($block->isAutocompleteDisabled()): ?>
+                            autocomplete="off" <?php endif; ?>
+                           id="email"
+                           type="email"
+                           class="input-text"
+                           title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                           data-validate="{required:true, 'validate-email':true}">
+                </div>
+                <div class="form-group mb-20 field password required">
+                    <label class="form-control-label label" for="pass">
+                        <span><?= $block->escapeHtml(__('PASSWORD')) ?></span>
+                    </label>
+                    <input name="login[password]" type="password"
+                        <?php if ($block->isAutocompleteDisabled()): ?>
+                            autocomplete="off" <?php endif; ?>
+                           class="input-text"
+                           id="pass"
+                           title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
+                           data-validate="{required:true, 'validate-password':true}">
+                </div>
+                <?= $block->getChildHtml('form_additional_info') ?>
+                <div class="form-group">
+                    <div class="col-lg-12 p-0">
+                        <button type="submit" class="btn login login-btn btn-outline-primary" name="send">
+                            <span><?= $block->escapeHtml(__('LOGIN')) ?></span>
+                        </button>
+                    </div>
+                    <div class="col-lg-12 p-0">
+                        <h6 class="no-access">
+                            <a href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>">
+                                <span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span>
+                            </a>
+                        </h6>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
